@@ -27,6 +27,6 @@ public interface IUserRepository  extends JpaRepository<Users, Integer> {
 	@Query("Select u FROM Users u where u.userId=:userId " )
 	public Users findByUserId(@Param("userId") String userId);
 	
-	
+		
 
 }

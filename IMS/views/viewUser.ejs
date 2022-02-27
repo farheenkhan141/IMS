@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-
+<body>
 
 
   <div>
@@ -61,7 +61,7 @@
                       <%= users[i].branch%>
                     </td>
 
-                    <td>
+                    <td id="admin1">
                       <a href="/ims/edituser<%= users[i].id%>"><i class="fas fa-edit fa-lg" aria-hidden="true"></i></a>&nbsp;
                      <a href="/ims/deleteuser<%= users[i].id%>"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
                  </td>
@@ -84,9 +84,27 @@
           </div>
   </div>
 
+  <script>
+
+        
+       
+    if (type == "ADMIN") {
+      console.log(type)
+        document.getElementById('admin1').style.display = ""
+  
+    } else{
+      console.log(type)
+        document.getElementById('admin1').style.display = "none"
+       
+   
+       
+   
+    }
 
 
- 
+</script>
+
+</body>
 
 
 </html>

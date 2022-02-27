@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-
+<body>
 <div>
     <img src="../assets/images/bg.jpeg">
 
@@ -22,12 +22,13 @@
             <div class="container1 ">
                 <% if (time_table.length>0) { %>
                     <%var day=["monday","tuesday","wednesday","thursday","friday"]%>
-                        <%var time=["9:00 to 11:00","11:00 to 1:00","1:00 to 2:00","2:00 to 4:00","4:00 to 5:00"]%>
+                        <%var time=["9:00 to 11:00","11:00 to 1:00","2:00 to 4:00","4:00 to 5:00"]%>
                         <%var breaks=["B","R","E","A","K"]%>
                             
                                 <div class="try">
                                 <center>
-                                    <h3>TimeTable List</h3>
+                                    <h3>TimeTable List <a id="admin1" href=""><i class="fas fa-edit fa-lg" aria-hidden="true"></i></a>&nbsp;
+                                    </h3>
                                     <table border="5" cellspacing="0" >
                                         <tr>
 
@@ -44,6 +45,7 @@
                                                     11:00 to 1:00
                                                 </b>
                                             </td>
+                                            
                                             
                                             <td align="center" class="timetable">
                                                 <b>
@@ -85,12 +87,9 @@
                                                                     <b>(<%=time_table[i].userName%>)</b>
                                                                     
                                                                 </td>
-                                                                <%}else{%>
-
+                                                                <%}else {%>
                                                                     
-                                                                    <%}%>
-                                                                    
-                                                    
+                                                    <%}%>
                                                     
                                                        <%}}%>  
 
@@ -120,8 +119,27 @@
             </div>
 </div>
 
+<script>
+
+        
+       
+    if (type == "ADMIN") {
+      console.log(type)
+        document.getElementById('admin1').style.display = ""
+  
+    } else{
+      console.log(type)
+        document.getElementById('admin1').style.display = "none"
+       
+   
+       
+   
+    }
 
 
+</script>
+
+</body>
 
 
 

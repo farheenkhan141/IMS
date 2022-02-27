@@ -12,65 +12,66 @@
 </head>
 
 
-
+<body >
   <div>
-    <!-- <img src="../assets/images/bg.jpeg"> -->
+    <img src="../assets/images/bg.jpeg">
 
     <%- include ('layouts/header.ejs') -%>
       <%- include ('layouts/nav.ejs') -%>
 
-<center>
+      <center>
     <div class="container2">
+      
+
         <h4 class="text-center ">MY Profile</h4>
-        <form class="form-card" action="/ims/edituser1" method="post"  >
-
-           
-            <div class="row justify-content-center col-sm-8">
-                <div class="form-group "> <label class="col-sm-4 ">Full Name <label class="form-group col-sm-4"><%=user.name%> </label> </div>
-                </div>
+        <center>
+          <div class="row col-md-8  ">
+         <label><b>Full Name :</b></label>&nbsp;<label><span id="name"></span></label>
+         </div>
+         <div class="row col-md-8 ">
+         <label><b>UserId :</b></label>&nbsp;<label><span id="userId"></span></label>
+        </div>
+        <div class="row col-md-8 ">
+         <label><b>Branch :</b></label>&nbsp;<label><span id="branch"></span></label>
+        </div>
+        <div class="row col-md-8 ">
+         <label><b>Role :</b></label>&nbsp;<label><span id="type"></span></label>
+         </div>
+         <div class="row col-md-8 ">
+         <label><b>Email :</b></label>&nbsp;<label><span id="email"></span></label>
+         </div>
+         <div class="row col-md-8 ">
+         <label><b>Phone Number :</b></label>&nbsp;<label><span id="phoneNo"></span></label>
             </div>
-                <div class="row justify-content-center ">
-                    <div class="form-group col-md-6"> <label class="form-control-label ">User ID <span class="text-danger"> *</span></label><input type="text" id="userId" name="userId" placeholder="Enter User Id" onblur="validate(2)"> </div>
-                    </div>
-                <div class=" row justify-content-center ">
-                    <div class="form-group col-md-6"> <label class="form-control-label ">Email <span class="text-danger"> *</span></label><input type="text" id="email" name="email" placeholder="Enter Subject Code" onblur="validate(3)"> </div>
-                    </div>
-                    <div class=" row justify-content-center ">
-                        <div class="form-group col-md-6"> <label class="form-control-label ">Mobile <span class="text-danger"> *</span></label><input type="text" id="phoneNo" name="phoneNo" placeholder="Enter Mobile No." onblur="validate(4)"> </div>
-                        </div>
-                        <div class=" row justify-content-center ">
-                            <div class="form-group col-md-6"> <label class="form-control-label ">Passowrd<span class="text-danger"> *</span></label><input type="password" id="password" name="password" placeholder="Enter Passowrd" onblur="validate(4)"> </div>
-                            </div>
-                            <div class=" row justify-content-center ">
-                                <div class="form-group col-sm-6 ">
-                                    <label for="role">Select Role</label>
-                                     <select class="custom-select" name="role" id="role">
-                                        <option  value="..">..</option>
-                                    <option name="role" value="student">Student</option>
-                                    <option name="role" value="faculty">Faculty</option>
-                                  </select> </div>
-                            </div>
-
             <div class=" row justify-content-center ">
-                <div class="form-group col-sm-6 ">
-                    <label for="branch">Select Branch</label>
-                     <select class="custom-select" name="branch" id="branch">
-                        <option  value="..">..</option>
-                    <option  value="IT">IT</option>
-                    <option value="Computer">Computer</option>
-                    <option  value="Electrical">Electrical</option>
-                    <option  value="Mechanical">Mechanical</option>
-                  </select> </div>
-            </div>
-            
-                  
-            
+                <a href=""> <button type="submit" class="btn-block btn-primary ">Edit Profile&nbsp;&nbsp<i class="fas fa-edit fa-lg" aria-hidden="true"></i></button></a>&nbsp;
+                    
+                 </div>
+   
        
-            <div class=" row justify-content-center ">
-                <div class="form-group col-sm-3"> <button type="submit" class="btn-block btn-primary ">Add User&nbsp;&nbsp;<i class="fa fa-database "></i></button> </div>
-            </div>
-        </form>
-    </div>
     </center>
+          </div> 
+        </center>
+
+ 
   </div>
+  <script>
+   
+    let user1=JSON.parse(localStorage.getItem("user"));
+   
+  
+      //  document.getElementById("id").innerHTML =user1.id
+       document.getElementById("name").innerHTML =user1.name
+       document.getElementById("userId").innerHTML =user1.userId
+       document.getElementById("branch").innerHTML =user1.branch
+       document.getElementById("email").innerHTML =user1.email
+       document.getElementById("type").innerHTML =user1.type
+       document.getElementById("phoneNo").innerHTML =user1.phoneNo
+
+
+    
+    
+  </script>
+  </body>
+
   </html>

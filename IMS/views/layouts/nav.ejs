@@ -1,68 +1,216 @@
 <!DOCTYPE html>
 
-<html >
-   <head>
+<html>
+
+<head>
 
     <meta charset="utf-8">
-   
-     
-      <title>IMS</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-      <link rel="stylesheet" href="/assets/css/navStyle.css">
-     
-   </head>
-   <body>
-
-<div>
-
-   
-    <nav>
-        <ul>
-            <li><a class="active" href="home">Home</a></li>
-            <li>
-                <a href="#">Users
-                    <i class="fas fa-caret-down"></i>
-                </a>
-                <ul>
-                    <li><a href="adduserpage">Add User</a></li>
-                    <li><a href="alluserfaculty">View Faculties</a></li>
-                    <li><a href="alluserstudent">View Students</a></li>
-                    
-
-                </ul>
-            </li>
-            <li>
-                <a href="#">Time Table
-                    <i class="fas fa-caret-down"></i>
-                </a>
-                <ul>
-                    <li><a href="addrequest">Add TimeTable </a></li>
-                    <li><a href="viewtimetable">View TimeTable</a></li>
-                
-
-                </ul>
-            </li>
-            
-            <li>
-                <a href="#">Subject
-                    <i class="fas fa-caret-down"></i>
-                </a>
-                <ul>
-                    <li><a href="addsubjectpage">Add Subject</a></li>
-                    <li><a href="allsubject">View Subject</a></li>
-
-                </ul>
-            </li>
-            <li class="right"><a href="#">Log Out</a></li>
-            <li class="right"><a href="myprofile">My Profile</a></li>
 
 
-        </ul>
+    <title>IMS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/css/navStyle.css">
+
+</head>
+<script>
+    function logout() {
+
+ 
+  
+    localStorage.clear()
+    window.location.href = "/ims/";    
+  
+}
+
+</script>
+
+<body>
+
+    <div id="admin">
+        <nav>
+
+            <ul>
+                <li><a class="active" href="home">Home</a></li>
+                <li>
+                    <a href="#">Users
+                        <i class="fas fa-caret-down"></i>
+                    </a>
+                    <ul>
+                        <li><a href="adduserpage">Add User</a></li>
+
+                        <li><a href="alluserfaculty">View Faculties</a></li>
+
+                        <li><a href="alluserstudent">View Students</a></li>
 
 
-    </nav>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Time Table
+                        <i class="fas fa-caret-down"></i>
+                    </a>
+                    <ul>
+                        <li><a href="addrequest">Add TimeTable </a></li>
+
+                        <li><a href="viewtimetable">View TimeTable</a></li>
 
 
-</div>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">Subject
+                        <i class="fas fa-caret-down"></i>
+                    </a>
+                    <ul>
+                        <li><a href="addsubjectpage">Add Subject</a></li>
+                        <li><a href="allsubject">View Subject</a></li>
+
+                    </ul>
+                </li>
+                <li class="right" onclick="logout()"><a href="/ims/">Log Out</a></li>
+                <li class="right"><a href="myprofile">My Profile</a></li>
+
+
+            </ul>
+
+
+        </nav>
+
+    </div>
+
+
+    <div id="student">
+        <nav>
+
+            <ul>
+                <li><a class="active" href="home">Home</a></li>
+                <li>
+                    <a href="#">Users
+                        <i class="fas fa-caret-down"></i>
+                    </a>
+                    <ul>
+                        
+
+                        <li><a href="alluserfaculty">View Faculties</a></li>
+
+                      
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Time Table
+                        <i class="fas fa-caret-down"></i>
+                    </a>
+                    <ul>
+                      
+                        <li><a href="viewtimetable">View TimeTable</a></li>
+
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">Subject
+                        <i class="fas fa-caret-down"></i>
+                    </a>
+                    <ul>
+                        <li><a href="allsubject">View Subject</a></li>
+
+                    </ul>
+                </li>
+                <li class="right" onclick="logout()"><a>Log Out</a></li>
+                <li class="right"><a href="myprofile">My Profile</a></li>
+
+
+            </ul>
+
+
+        </nav>
+
+    </div>
+
+
+
+    <div id="faculty">
+        <nav>
+
+            <ul>
+                <li><a class="active" href="home">Home</a></li>
+                <li>
+                    <a href="#">Users
+                        <i class="fas fa-caret-down"></i>
+                    </a>
+                    <ul>
+                       
+
+                        <li><a href="alluserfaculty">View Faculties</a></li>
+
+                        <li><a href="alluserstudent">View Students</a></li>
+
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Time Table
+                        <i class="fas fa-caret-down"></i>
+                    </a>
+                    <ul>
+                        
+                        <li><a href="viewtimetable">View TimeTable</a></li>
+
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">Subject
+                        <i class="fas fa-caret-down"></i>
+                    </a>
+                    <ul>
+                        <li><a href="allsubject">View Subject</a></li>
+
+                    </ul>
+                </li>
+                <li class="right" onclick="logout()"><a href="/ims/">Log Out</a></li>
+                <li class="right"><a href="myprofile">My Profile</a></li>
+
+
+            </ul>
+
+
+        </nav>
+
+    </div>
+
+
+
+
+    <script>
+        let user = JSON.parse(localStorage.getItem("user"));
+        let type = user.type
+       
+        if (type == "ADMIN") {
+            document.getElementById('admin').style.display = ""
+            document.getElementById('faculty').style.display = "none"
+            document.getElementById('student').style.display = "none"
+       
+       
+        } else  if (type == "FACULTY") {
+            document.getElementById('admin').style.display = "none"
+            document.getElementById('student').style.display = "none"
+       
+            document.getElementById('faculty').style.display = ""
+        } else{
+            document.getElementById('admin').style.display = "none"
+            document.getElementById('faculty').style.display = "none"
+       
+            document.getElementById('student').style.display = ""
+       
+        }
+
+
+    </script>
 </body>
+
 </html>

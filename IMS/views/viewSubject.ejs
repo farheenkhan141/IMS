@@ -13,6 +13,7 @@
 
 
 
+<body>
   <div>
     <img src="../assets/images/bg.jpeg">
 
@@ -61,12 +62,14 @@
                       <%= subject[i].branch%>
                     </td>
 
-
-                    <td>
+                    <div >
+                    <td id="admin1">
+                     
                       <a href="/ims/editsubject<%= subject[i].id%>"><i class="fas fa-edit fa-lg" aria-hidden="true"></i></a>&nbsp;
                       <a href="/ims/deletesubject<%= subject[i].id%>"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
-                  </td>
-
+                 
+                    </td>
+                  </div>
                   </tr>
                   <% } %>
               </tbody>
@@ -84,7 +87,27 @@
          
           </div>
   </div>
+  <script>
 
+        
+       
+        if (type == "ADMIN") {
+          console.log(type)
+            document.getElementById('admin1').style.display = ""
+      
+        } else{
+          console.log(type)
+            document.getElementById('admin1').style.display = "none"
+           
+       
+           
+       
+        }
+
+
+  </script>
+
+</body>
 
 
  

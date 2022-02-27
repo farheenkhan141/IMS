@@ -11,5 +11,6 @@ public class UserDetails {
 	private String userId;
 	private String email;
 	private String phoneNo;
+	private String password;
 	
 }

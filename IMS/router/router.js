@@ -2,33 +2,27 @@ const express=require('express');
 const router=express.Router();
 const axios=require('axios');
 const bodyparser=require('body-parser');
+var JSAlert = require("js-alert"); 
 const app=express();
 app.use(bodyparser.json());
 
-// const store = require("store2");
 
-const LocalStorage = require('node-localstorage').LocalStorage,
-  localStorage = new LocalStorage('./scratch');
+
 
 //home page
 const controller=require('../controller/imsController');
 const { json } = require('express/lib/response');
+
 //myprofile 
 
 router.get('/myprofile',(req,res)=>{
-  axios.get('http://localhost:8084/ims/getuser/byid',{
-    params:{
-      id:1
-    }
-  }).then(function(user){
-    console.log(user.data)
-    res.render("myProfile",{'user':user.data})
-  })
+  res.render('myProfile')
   
 });
 
 //login 
 router.get('/',(req,res)=>{
+  
   res.render("login")
 });
 //login 
@@ -39,19 +33,24 @@ router.post('/login',(req,res)=>{
     params: {
       userId:req.body.userId,
       password:req.body.password
- 
     }
   }).then(function(user){
-  localStorage.setItem('Name',JSON.stringify(user.data)) 
-    console.log(localStorage.getItem('Name'))
-    // store('Profile', {name: 'Adam', age: 27, salary: 3452}); 
-    res.redirect("/ims/home");
+   
+  
+   console.log({
+     userdata:user.data
+   })
+      res.render("redirect",{'user':user.data});
+    
+    
 })
 });
 
 
+
 //homepage
 router.get('/home',(req,res)=>{
+ 
     res.render("home")
 });
 
@@ -94,7 +93,7 @@ router.get('/editsubject:id',(req,res)=>{
           id: sid
         }
       }).then(function(subject){
-        console.log(subject.data)
+        
         res.render("editSubject",{'subject':subject.data})
        
      })
@@ -143,7 +142,7 @@ router.get('/edituser:id',(req,res)=>{
           id: uid
         }
       }).then(function(user){
-        console.log(user.data)
+        
         res.render("editUser",{'user':user.data})
        
      })

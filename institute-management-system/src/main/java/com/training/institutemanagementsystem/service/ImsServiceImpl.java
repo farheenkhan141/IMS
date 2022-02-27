@@ -61,8 +61,6 @@ public class ImsServiceImpl implements ImsService {
 		user.setEmail(update.getEmail());
 		user.setType(UserType.toEnum(update.getType()));
 		user.setBranch(update.getBranch());
-		user.setUserId(update.getUserId());
-		user.setPassword(update.getOldPassword());
 		
 	return userUtil.toDetails(user);
 	}
@@ -81,15 +79,16 @@ public class ImsServiceImpl implements ImsService {
 
 	@Override
 	public Users authenticateUser(String userId,String password) {
-		Users user= userRepo.findByUserId(userId);
+		Users 	user= userRepo.findByUserId(userId);;
 		
-		if(user.equals(null)) {
+		
+		if(user==null) {
 			return null;
 		}else if((userId.equals(user.getUserId()))&&(password.equals(user.getPassword()))) {
 			return user;
 		}
-
-		return user;		
+		return user;
+			
 	}
 
 	@Override

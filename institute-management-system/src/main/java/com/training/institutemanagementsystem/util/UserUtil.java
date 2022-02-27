@@ -20,13 +20,13 @@ public class UserUtil {
 		user.setName(request.getName());
 		user.setBranch(request.getBranch());
 		user.setEmail(request.getEmail());
-		user.setPassword(request.getPassword());
+		
 		user.setPhoneNo(request.getPhoneNo());
 		
-//		String userId=request.getName().substring(0, 3).concat(request.getBranch().substring(0, 2)+""+request.getPhoneNo().subSequence(0, 4));
-//		System.out.println(userId);
-//		user.setUserId(userId);
-		user.setUserId(request.getUserId());
+		String userId=request.getEmail().split("@")[0];
+		user.setUserId(userId);
+		user.setPassword(userId);
+
 				return user;
 	}
 	
@@ -39,6 +39,7 @@ public class UserUtil {
 		details.setUserId(user.getUserId());
 		details.setType(user.getType().toString());
 		details.setPhoneNo(user.getPhoneNo());
+		details.setPassword(user.getPassword());
 		return details;
 	}
 	

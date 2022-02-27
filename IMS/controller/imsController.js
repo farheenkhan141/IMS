@@ -10,8 +10,6 @@ function insertRecord(req, res) {
           name: req.body.name,
           email:req.body.email,
           phoneNo:req.body.phoneNo,
-          userId:req.body.userId,
-          password:req.body.password,
           branch:req.body.branch,
           type:req.body.role
         }
@@ -71,6 +69,8 @@ function insertTimeTable(req, res) {
         userId:req.body.user2
 
       },
+      
+      
       {
         day:req.body.day,
         time:req.body.time3,
@@ -117,8 +117,6 @@ function updateUser(req,res,uid) {
           name: req.body.name,
           email:req.body.email,
           phoneNo:req.body.phoneNo,
-          userId:req.body.userId,
-          password:req.body.password,
           branch:req.body.branch,
           type:req.body.role
 
