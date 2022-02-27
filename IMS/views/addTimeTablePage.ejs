@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html>
+<title>IMS</title>
+
+<head>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+
+
+<div>
+    <!-- <img src="../assets/images/bg.jpeg"> -->
+
+    <%- include ('layouts/header.ejs') -%>
+        <%- include ('layouts/nav.ejs') -%>
+
+            <center>
+                <div class="container2 ">
+                    <h4 class="text-center ">Add TimeTable</h4>
+                    <form class="form-card" action="/ims/addtimetable" method="post" name="form" onsubmit="return validateForm()">
+                        <div class=" row justify-content-center ">
+                            <div >
+                                <div class="form-group col-sm-2"> <label class="form-control-label">Branch</label><input    size="6" type="text" id="branch" name="branch"  value="<%=branch%>" onblur="validate(2)" readonly> </div>
+                                </div>
+                                <div >
+                                    <div class="form-group col-sm-2"> <label class="form-control-label">Year</label><input size="6" type="text" id="year" name="year"  value="<%=year%>" onblur="validate(2)" readonly> </div>
+                                    </div>
+                                    <div >
+                                        <div class="form-group col-sm-2"> <label  class="form-control-label">Semester</label><input size="6" type="text" id="sem" name="sem"  value="<%=sem%>" onblur="validate(2)" readonly> </div>
+                                        </div>
+
+                        </div>
+
+                       
+                           
+                           
+
+
+
+                        <div class=" row justify-content-center ">
+                            <div class="form-group col-sm-8 ">
+                                <label for="branch">Select Day</label>
+                                <select class="custom-select" name="day" id="day"  onblur="validate(4)">
+                                    <option selected>...</option>
+                                    <option value="monday">MONDAY</option>
+                                    <option value="tuesday">TUESDAY</option>
+                                    <option value="wednesday">WEDNESDAY</option>
+                                    <option value="thursday">THURSDAY</option>
+                                    <option value="friday">FRIDAY</option>
+
+                                </select>
+                            </div>
+                           
+                        </div>
+
+
+
+                        
+
+                        <div class=" row justify-content-center ">
+                            <div class="form-group col-sm-3 ">
+                                <label for="time">Select Time</label>
+                                <select class="custom-select" name="time1" id="time1"  onblur="validate(5)">
+                                    <option selected>...</option>
+                                    <option value="9:00 to 11:00">9:00 to 11:00</option>
+                                    <option value="11:00 to 1:00">11:00 to 1:00</option>
+                                    <option value="2:00 to 4:00">2:00 to 4:00</option>
+                                    <option value="4:00 to 5:00">4:00 to 5:00</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-3 ">
+                                <label for="user">Select Faculty</label>
+                                <select class="custom-select" name="user1" id="user1"  onblur="validate(6)">
+                                    <option selected>...</option>
+                                        <% var options = []; %>
+                                        <% for(var i=0; i < users.length; i++) { %>
+                                            <%if(users[i].type=="FACULTY"){%>
+                                          <option value="<%= users[i].userId %>"><%= users[i].name %> (<%= users[i].branch %>)</option>
+                                                
+                                          <%} } %>
+                                          <option >NA</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-3 ">
+                                <label for="subject">Select Subject</label>
+                                <select class="custom-select" name="subject1" id="subject1"  onblur="validate(7)">
+                                    <option selected>NA</option>
+                                        <% var options = []; %>
+                                        <% for(var i=0; i < subjects.length; i++) { %>
+                                            <%if((subjects[i].branch==branch)&&(subjects[i].sem==sem)&&(subjects[i].year==year)){%>
+                                          <option value="<%= subjects[i].subjectCode%>"><%= subjects[i].name%> (<%= subjects[i].branch %>)</option>
+                                        <% }} %>
+                                      
+                                </select>
+                            </div>
+                            </div>
+
+                            <div class=" row justify-content-center ">
+                                <div class="form-group col-sm-3 ">
+                                    <label for="time">Select Time</label>
+                                    <select class="custom-select" name="time2" id="time2"  onblur="validate(5)">
+                                        <option selected>...</option>
+                                        <option value="9:00 to 11:00">9:00 to 11:00</option>
+                                        <option value="11:00 to 1:00">11:00 to 1:00</option>
+                                        <option value="2:00 to 4:00">2:00 to 4:00</option>
+                                        <option value="4:00 to 5:00">4:00 to 5:00</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-3 ">
+                                    <label for="user">Select Faculty</label>
+                                    <select class="custom-select" name="user2" id="user2"  onblur="validate(6)">
+                                        <option selected>NA</option>
+                                            <% var options = []; %>
+                                            <% for(var i=0; i < users.length; i++) { %>
+                                                <%if(users[i].type=="FACULTY"){%>
+                                              <option value="<%= users[i].userId %>"><%= users[i].name %> (<%= users[i].branch %>)</option>
+                                            <% } }%>
+                                          
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-3 ">
+                                    <label for="subject">Select Subject</label>
+                                    <select class="custom-select" name="subject2" id="subject2"  onblur="validate(7)">
+                                        <option selected>NA</option>
+                                            <% var options = []; %>
+                                            <% for(var i=0; i < subjects.length; i++) { %>
+                                                <%if((subjects[i].branch==branch)&&(subjects[i].sem==sem)&&(subjects[i].year==year)){%>
+                                              <option value="<%= subjects[i].subjectCode%>"><%= subjects[i].name%> (<%= subjects[i].branch %>)</option>
+                                            <% }} %>
+                                          
+                                    </select>
+                                </div>
+                                </div>
+
+                                <div class=" row justify-content-center ">
+                                    <div class="form-group col-sm-3 ">
+                                        <label for="time">Select Time</label>
+                                        <select class="custom-select" name="time3" id="time3"  onblur="validate(5)">
+                                            <option selected>...</option>
+                                            <option value="9:00 to 11:00">9:00 to 11:00</option>
+                                            <option value="11:00 to 1:00">11:00 to 1:00</option>
+                                            <option value="2:00 to 4:00">2:00 to 4:00</option>
+                                            <option value="4:00 to 5:00">4:00 to 5:00</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-sm-3 ">
+                                        <label for="user">Select Faculty</label>
+                                        <select class="custom-select" name="user3" id="user3"  onblur="validate(6)">
+                                            <option selected>NA</option>
+                                                <% var options = []; %>
+                                                <% for(var i=0; i < users.length; i++) { %>
+                                                    <%if(users[i].type=="FACULTY"){%>
+                                                  <option value="<%= users[i].userId %>"><%= users[i].name %> (<%= users[i].branch %>)</option>
+                                                <% }} %>
+                                              
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-sm-3 ">
+                                        <label for="subject">Select Subject</label>
+                                        <select class="custom-select" name="subject3" id="subject3"  onblur="validate(7)">
+                                            <option selected>NA</option>
+                                                <% var options = []; %>
+                                                <% for(var i=0; i < subjects.length; i++) { %>
+                                                    <%if((subjects[i].branch==branch)&&(subjects[i].sem==sem)&&(subjects[i].year==year)){%>
+                                                  <option value="<%= subjects[i].subjectCode%>"><%= subjects[i].name%> (<%= subjects[i].branch %>)</option>
+                                                <% }} %>
+                                              
+                                        </select>
+                                    </div>
+                                    </div>
+
+                                    <div class=" row justify-content-center ">
+                                        <div class="form-group col-sm-3 ">
+                                            <label for="time">Select Time</label>
+                                            <select class="custom-select" name="time4" id="time4"  onblur="validate(5)">
+                                                <option selected>...</option>
+                                                <option value="9:00 to 11:00">9:00 to 11:00</option>
+                                                <option value="11:00 to 1:00">11:00 to 1:00</option>
+                                                <option value="2:00 to 4:00">2:00 to 4:00</option>
+                                                <option value="4:00 to 5:00">4:00 to 5:00</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-sm-3 ">
+                                            <label for="user">Select Faculty</label>
+                                            <select class="custom-select" name="user4" id="user4"  onblur="validate(6)">
+                                                <option selected>NA</option>
+                                                    <% var options = []; %>
+                                                    <% for(var i=0; i < users.length; i++) { %>
+                                                        <%if(users[i].type=="FACULTY"){%>
+                                                      <option value="<%= users[i].userId %>"><%= users[i].name %> (<%= users[i].branch %>)</option>
+                                                    <% }} %>
+                                                  
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-sm-3 ">
+                                            <label for="subject">Select Subject</label>
+                                            <select class="custom-select" name="subject4" id="subject4"  onblur="validate(7)">
+                                                <option selected>...</option>
+                                                    <% var options = []; %>
+                                                    <% for(var i=0; i < subjects.length; i++) { %>
+                                                        <%if((subjects[i].branch==branch)&&(subjects[i].sem==sem)&&(subjects[i].year==year)){%>
+                                                      <option value="<%= subjects[i].subjectCode%>"><%= subjects[i].name%> (<%= subjects[i].branch %>)</option>
+                                                    <% }} %>
+                                                  
+                                            </select>
+                                        </div>
+                                        </div>
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class=" row justify-content-center ">
+                            <div class="form-group col-sm-4"> <button type="submit" class="btn-block btn-primary ">Add
+                                    TimeTable&nbsp;&nbsp;<i class="fa fa-database "></i></button> </div>
+                        </div>
+                    </form>
+                </div>
+            </center>
+</div>
+
+
+<script type='text/Javascript'>
+    function validate(val) {
+    v1 = document.getElementById("branch");
+    v2 = document.getElementById("year");
+    v3 = document.getElementById("sem");
+    v4 = document.getElementById("day");
+    v5 = document.getElementById("time");
+    v6 = document.getElementById("user");
+    v7= document.getElementById("subject");
+    
+    
+    flag1 = true;
+    flag2 = true;
+    flag3 = true;
+    flag4 = true;
+    flag5 = true;
+    flag6 = true;
+    flag7 = true;
+    
+    if(val==1 || val==0) {
+    if(v1.value == "...") {
+    v1.style.borderColor = "red";
+    flag1 = false;
+    }
+    else {
+    v1.style.borderColor = "green";
+    flag1 = true;
+    }
+    }
+    
+    if(val==2 || val==0) {
+    if(v2.value == "...") {
+    v2.style.borderColor = "red";
+    flag2 = false;
+    }
+    else {
+    v2.style.borderColor = "green";
+    flag2 = true;
+    }
+    }
+    
+     
+    if(val==3 || val==0) {
+    if(v3.value == "...") {
+    v3.style.borderColor = "red";
+    flag3= false;
+    }
+    else {
+    v3.style.borderColor = "green";
+    flag3 = true;
+    }
+    }
+
+    if(val==4 || val==0) {
+    if(v4.value == "...") {
+    v4.style.borderColor = "red";
+    flag4= false;
+    }
+    else {
+    v4.style.borderColor = "green";
+    flag4 = true;
+    }
+    }
+
+    if(val==5 || val==0) {
+    if(v5.value == "...") {
+    v5.style.borderColor = "red";
+    flag5= false;
+    }
+    else {
+    v5.style.borderColor = "green";
+    flag5= true;
+    }
+    }
+
+    if(val==6 || val==0) {
+    if(v6.value == "...") {
+    v6.style.borderColor = "red";
+    flag6= false;
+    }
+    else {
+    v6.style.borderColor = "green";
+    flag6 = true;
+    }
+    }
+    if(val==7 || val==0) {
+    if(v7.value == "...") {
+    v7.style.borderColor = "red";
+    flag7= false;
+    }
+    else {
+    v7.style.borderColor = "green";
+    flag = true;
+    }
+    }
+    
+    
+    
+    flag = flag1 && flag2 && flag3  && flag4 && flag5  && flag6 && flag7 ;
+    
+    return flag;
+    }
+    
+    function validateForm(){
+        let x = document.forms["form"]["branch"].value;
+       
+      if ((document.forms["form"]["branch"].value == "...")||(document.forms["form"]["year"].value == "...")
+            ||(document.forms["form"]["sem"].value == "...")||(document.forms["form"]["day"].value == "...")
+                ||(document.forms["form"]["time"].value == "...")||(document.forms["form"]["user"].value == "...")
+                ||(document.forms["form"]["subject"].value == "...")) {
+        alert("All Data Must be Filled Out");
+        
+        return false;
+      }
+    
+      
+    }
+</script>    
+
+</html>

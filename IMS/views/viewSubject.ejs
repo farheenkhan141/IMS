@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+<title>IMS</title>
+
+<head>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+
+
+  <div>
+    <img src="../assets/images/bg.jpeg">
+
+    <%- include ('layouts/header.ejs') -%>
+      <%- include ('layouts/nav.ejs') -%>
+
+<center>
+   
+          <div class="col-md-6 offset-md-3 container1 ">
+          <% if (subject.length>0) { %>
+            <center>
+            <h3>Subject List</h3>
+
+
+            <table class="table table-striped ">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Subject Code</th>
+                  <th>Name</th>
+                  <th>Sem</th>
+                  <th>Year</th>
+                  <th>Branch</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <% for(var i=0; i < subject.length; i++) { %>
+                  <tr>
+                    <td>
+                      <%= subject[i].id%>
+                    </td>
+                    <td>
+                      <%= subject[i].subjectCode%>
+                    </td>
+                    <td>
+                      <%= subject[i].name%>
+                    </td>
+                    <td>
+                      <%= subject[i].sem%>
+                    </td>
+                    <td>
+                      <%= subject[i].year%>
+                    </td>
+                    <td>
+                      <%= subject[i].branch%>
+                    </td>
+
+
+                    <td>
+                      <a href="/ims/editsubject<%= subject[i].id%>"><i class="fas fa-edit fa-lg" aria-hidden="true"></i></a>&nbsp;
+                      <a href="/ims/deletesubject<%= subject[i].id%>"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+                  </td>
+
+                  </tr>
+                  <% } %>
+              </tbody>
+            </table>
+            
+          
+     
+        </center>
+        
+
+
+          <% } else { %>
+            <div>No subject found.</div>
+            <% } %>
+         
+          </div>
+  </div>
+
+
+
+ 
+
+
+</html>

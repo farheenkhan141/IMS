@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html>
+<title>IMS</title>
+
+<head>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="/assets/css/style.css"> -->
+  
+</head>
+
+
+
+  <div>
+    
+
+    <%- include ('layouts/header.ejs') -%>
+      <%- include ('layouts/nav.ejs') -%>
+
+<center>
+    <div class="container2">
+        <h4 class="text-center ">Edit User</h4>
+        <form class="form-card" action="/ims/updateuser<%=user.id%>" method="post"  >
+
+           
+            <div class="row justify-content-center ">
+                <div class="form-group col-md-6"> <label class="form-control-label ">Full Name <span class="text-danger"> *</span></label><input class=" " type="text" id="name" name="name" placeholder="Null" value="<%=user.name%>" onblur="validate(1)"> </div>
+                </div>
+                <div class="row justify-content-center ">
+                    <div class="form-group col-md-6"> <label class="form-control-label ">User ID <span class="text-danger"> *</span></label><input type="text" id="userId" name="userId" placeholder="Null" value="<%=user.userId%>" onblur="validate(2)"> </div>
+                    </div>
+                <div class=" row justify-content-center ">
+                    <div class="form-group col-md-6"> <label class="form-control-label ">Email <span class="text-danger"> *</span></label><input type="text" id="email" name="email" placeholder="Null" value="<%=user.email%>" onblur="validate(3)"> </div>
+                    </div>
+                    <div class=" row justify-content-center ">
+                        <div class="form-group col-md-6"> <label class="form-control-label ">Mobile <span class="text-danger"> *</span></label><input type="text" id="phoneNo" name="phoneNo" placeholder="Null" value="<%=user.phoneNo%>" onblur="validate(4)"> </div>
+                        </div>
+                        <div class=" row justify-content-center ">
+                          <div class="form-group col-md-6"> <label class="form-control-label ">Password <span class="text-danger"> *</span></label><input type="text" id="password" name="password" placeholder="Null" value="<%=user.password%>" onblur="validate(4)"> </div>
+                          </div>
+      
+                            <div class=" row justify-content-center ">
+                                <div class="form-group col-sm-6 ">
+                                    <label for="role">Select Role</label>
+                                    
+                                     <select class="custom-select" name="role" id="role" >
+                                      <%if(user.type=="FACULTY"){%>
+                                      <option name="role" value="faculty" selected>Faculty</option>
+                                      <option name="role" value="student" >Student</option>
+                                      <%}else{%>
+                                        <option name="role" value="faculty" >Faculty</option>
+                                    <option name="role" value="student" selected>Student</option>
+                                    <%}%>
+                                  </select> </div>
+                            </div>
+
+            <div class=" row justify-content-center ">
+                <div class="form-group col-sm-6 ">
+                    <label for="branch">Select Branch</label>
+                     <select class="custom-select" name="branch" id="branch">
+                      <%if(user.branch=="IT"){%>
+                    <option  value="IT" selected>IT</option>
+                    <option value="Computer">Computer</option>
+                    <option  value="Electrical">Electrical</option>
+                    <option  value="Mechanical">Mechanical</option>
+                    
+                    <%} else { if(user.branch=="Electrical"){%>
+                      <option  value="IT" >IT</option>
+                      <option value="Computer">Computer</option>
+                      <option  value="Electrical" selected>Electrical</option>
+                      <option  value="Mechanical">Mechanical</option>
+                      <%} else { if(user.branch=="Computer"){%>
+                        <option  value="IT" >IT</option>
+                        <option value="Computer" selected>Computer</option>
+                        <option  value="Electrical" >Electrical</option>
+                        <option  value="Mechanical">Mechanical</option>
+                        <%} else { if(user.branch=="Mechanical"){%>
+                          <option  value="IT" >IT</option>
+                          <option value="Computer" >Computer</option>
+                          <option  value="Electrical" >Electrical</option>
+                          <option  value="Mechanical" selected>Mechanical</option>
+                      
+                      <%}}}}%>
+                    
+                  </select> </div>
+            </div>
+            
+                  
+            
+       
+            <div class=" row justify-content-center ">
+                <div class="form-group col-sm-3"> <button type="submit" class="btn-block btn-primary ">Edit User&nbsp;&nbsp;<i class="fa fa-database "></i></button> </div>
+            </div>
+        </form>
+    </div>
+    </center>
+  </div>
+  </html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html>
+<title>IMS</title>
+
+<head>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+
+
+  <div>
+    <img src="../assets/images/bg.jpeg">
+
+    <%- include ('layouts/header.ejs') -%>
+      <%- include ('layouts/nav.ejs') -%>
+
+<center>
+    <div class="container2 ">
+        <h4 class="text-center ">Edit Subject</h4>
+        <form class="form-card" action="/ims/updatesubject<%=subject.id%>" method="post" name="form" onsubmit="return validateForm()">
+
+            
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6"> <label class="form-control-label ">Subject Name <span class="text-danger"> *</span></label>&nbsp; <input type="text" id="name" name="name" placeholder="Enter Subject Name" value="<%=subject.name%>" onblur="validate(1)"> </div>
+                </div>
+            
+                <div class="row justify-content-center">
+                    <div class="form-group col-md-6"> <label class="form-control-label ">Subject Code <span class="text-danger"> *</span></label>&nbsp; <input type="text" id="subjectCode" name="subjectCode" placeholder="Enter Subject Code"  value="<%=subject.subjectCode%>" onblur="validate(2)"> </div>
+                    </div>
+            
+
+            <div class="row justify-content-center">
+                <div class="form-group col-sm-6 "> 
+                  <label for="branch">Select Branch</label>
+                  <select class="custom-select" name="branch" id="branch">
+                    <%if(subject.branch=="IT"){%>
+                  <option  value="IT" selected>IT</option>
+                  <option value="Computer">Computer</option>
+                  <option  value="Electrical">Electrical</option>
+                  <option  value="Mechanical">Mechanical</option>
+                  
+                  <%} else { if(subject.branch=="Electrical"){%>
+                    <option  value="IT" >IT</option>
+                    <option value="Computer">Computer</option>
+                    <option  value="Electrical" selected>Electrical</option>
+                    <option  value="Mechanical">Mechanical</option>
+                    <%} else { if(subject.branch=="Computer"){%>
+                      <option  value="IT" >IT</option>
+                      <option value="Computer" selected>Computer</option>
+                      <option  value="Electrical" >Electrical</option>
+                      <option  value="Mechanical">Mechanical</option>
+                      <%} else { if(subject.branch=="Mechanical"){%>
+                        <option  value="IT" >IT</option>
+                        <option value="Computer" >Computer</option>
+                        <option  value="Electrical" >Electrical</option>
+                        <option  value="Mechanical" selected>Mechanical</option>
+                    
+                    <%}}}}%>
+                  
+                </select>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="form-group col-sm-3 ">
+                  <label for="branch">Select Year</label>
+                   <select class="custom-select" name="year" id="year" onblur="validate(4)">
+                    
+                    <%if(subject.year=="1"){%>
+                    <option value="1" selected>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <%}else if(subject.year=="2"){%>
+                        <option value="1" >1</option>
+                    <option value="2" selected>2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <%}else if(subject.year=="3"){%>
+                        <option value="1" >1</option>
+                    <option value="2"=>2</option>
+                    <option value="3" selected>3</option>
+                    <option value="4">4</option>
+                    <%} else{%>
+                        <option value="1" >1</option>
+                    <option value="2"=>2</option>
+                    <option value="3" >3</option>
+                    <option value="4" selected>4</option>
+                    <%}%>
+                  </select> </div>
+                  <div class="form-group col-sm-3 "> 
+                    <label for="branch">Select Sem</label>
+                    <select class="custom-select" name="sem" id="sem" onblur="validate(5)">
+                        <%if(subject.sem=="1"){%>
+                    <option value="1" selected>I</option>
+                    <option value="2">II</option>
+                    <option value="3">III</option>
+                    <option value="4">IV</option>
+                    <option value="5">V</option>
+                    <option value="6">VI</option>
+                    <option value="7">VII</option>
+                    <option value="8">VIII</option>
+                    <%}else if(subject.sem=="2"){%>
+                        <option value="1" >I</option>
+                        <option value="2" selected>II</option>
+                        <option value="3">III</option>
+                        <option value="4">IV</option>
+                        <option value="5">V</option>
+                        <option value="6">VI</option>
+                        <option value="7">VII</option>
+                        <option value="8">VIII</option>
+                        <%}else if(subject.sem=="3"){%>
+                            <option value="1" >I</option>
+                            <option value="2">II</option>
+                            <option value="3" selected>III</option>
+                            <option value="4">IV</option>
+                            <option value="5">V</option>
+                            <option value="6">VI</option>
+                            <option value="7">VII</option>
+                            <option value="8">VIII</option>
+                            <%}else if(subject.sem=="4"){%>
+                                <option value="1" >I</option>
+                                <option value="2">II</option>
+                                <option value="3">III</option>
+                                <option value="4" selected>IV</option>
+                                <option value="5">V</option>
+                                <option value="6">VI</option>
+                                <option value="7">VII</option>
+                                <option value="8">VIII</option>
+                                <%}else if(subject.sem=="5"){%>
+                                    <option value="1" >I</option>
+                                    <option value="2">II</option>
+                                    <option value="3">III</option>
+                                    <option value="4">IV</option>
+                                    <option value="5" selected>V</option>
+                                    <option value="6">VI</option>
+                                    <option value="7">VII</option>
+                                    <option value="8">VIII</option>
+                                    <%}else if(subject.sem=="6"){%>
+                                        <option value="1" >I</option>
+                                        <option value="2" >II</option>
+                                        <option value="3">III</option>
+                                        <option value="4">IV</option>
+                                        <option value="5">V</option>
+                                        <option value="6" selected>VI</option>
+                                        <option value="7">VII</option>
+                                        <option value="8">VIII</option>
+                                        <%}else if(subject.sem=="7"){%>
+                                            <option value="1" >I</option>
+                                            <option value="2">II</option>
+                                            <option value="3">III</option>
+                                            <option value="4">IV</option>
+                                            <option value="5">V</option>
+                                            <option value="6">VI</option>
+                                            <option value="7" selected>VII</option>
+                                            <option value="8">VIII</option>
+                                            <%}else if(subject.sem=="8"){%>
+                                                <option value="1" >I</option>
+                                                <option value="2">II</option>
+                                                <option value="3">III</option>
+                                                <option value="4" >IV</option>
+                                                <option value="5">V</option>
+                                                <option value="6">VI</option>
+                                                <option value="7">VII</option>
+                                                <option value="8" selected>VIII</option>
+                                                
+                                
+<%}%>
+                  </select> </div>
+            </div>
+
+            
+            
+            
+       
+            <div class="row justify-content-center">
+                <div class="form-group col-sm-3"> <button type="submit" class="btn-block btn-primary ">Edit Subject&nbsp;&nbsp;<i class="fa fa-edit"></i></button> </div>
+            </div>
+        </form>
+    </div>
+    </center>
+  </div>
+
+
+  <script type='text/Javascript'>
+    function validate(val) {
+    v1 = document.getElementById("name");
+    v2 = document.getElementById("subjectCode");
+    v3 = document.getElementById("branch");
+    v4 = document.getElementById("year");
+    v5 = document.getElementById("sem");
+ 
+    
+    
+    flag1 = true;
+    flag2 = true;
+    flag3 = true;
+    flag4 = true;
+    flag5 = true;
+    
+    
+    if(val==1 || val==0) {
+    if(v1.value == "") {
+    v1.style.borderColor = "red";
+    flag1 = false;
+    }
+    else {
+    v1.style.borderColor = "green";
+    flag1 = true;
+    }
+    }
+    
+    if(val==2 || val==0) {
+    if(v2.value == "") {
+    v2.style.borderColor = "red";
+    flag2 = false;
+    }
+    else {
+    v2.style.borderColor = "green";
+    flag2 = true;
+    }
+    }
+    
+    if(val==3 || val==0) {
+    if(v3.value == "...") {
+    v3.style.borderColor = "red";
+    flag3= false;
+    }
+    else {
+    v3.style.borderColor = "green";
+    flag3 = true;
+    }
+    }
+    
+
+    if(val==4 || val==0) {
+    if(v4.value == "...") {
+    v4.style.borderColor = "red";
+    flag4= false;
+    }
+    else {
+    v4.style.borderColor = "green";
+    flag4 = true;
+    }
+    }
+
+    if(val==5 || val==0) {
+    if(v5.value == "...") {
+    v5.style.borderColor = "red";
+    flag5= false;
+    }
+    else {
+    v5.style.borderColor = "green";
+    flag5= true;
+    }
+    }
+
+    
+    
+    
+    flag = flag1 && flag2 && flag3  && flag4 && flag5   ;
+    
+    return flag;
+    }
+    
+    function validateForm(){
+        let x = document.forms["form"]["branch"].value;
+       
+      if ((document.forms["form"]["branch"].value == "...")||(document.forms["form"]["year"].value == "...")
+            ||(document.forms["form"]["sem"].value == "...")||(document.forms["form"]["name"].value == "")
+                ||(document.forms["form"]["subjectCode"].value == "")) {
+        alert("All Data Must be Filled Out");
+        
+        return false;
+      }
+    
+      
+    }
+</script>  
+
+
+  </html>

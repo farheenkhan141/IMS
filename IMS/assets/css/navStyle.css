@@ -1,0 +1,64 @@
+nav{
+    height: 70px;
+    background: #063247;
+    position: relative;
+    width: 98%;
+    box-shadow: 0 3px 15px rgba(0,0,0,.4);
+    margin-left: 10px;
+    margin-right:30px;
+  }
+  
+  
+  nav ul li{
+    display: inline-block;
+    margin-right: 5px;
+  }
+  nav ul li a{
+    float:none;
+    color: white;
+    display: block;
+    padding: 0 15px;
+    line-height: 70px;
+    font-size: 19px;
+    background: #063247;
+    transition: .5s;
+  }
+ 
+  nav ul ul{
+    position: absolute;
+    top: 85px;
+    opacity: 0;
+    visibility: collapse;
+  }
+  nav ul li:hover > ul{
+    top: 70px;
+    opacity: 1;
+    visibility: visible;
+  
+  }
+  nav ul ul li{
+    width: auto;
+    height: auto;
+    display: list-item;
+    position: relative;
+    border: 1px solid #042331;
+    border-top: none;
+  }
+  nav ul ul li a{
+    line-height: 50px;
+  }
+  nav ul ul ul{
+    border-top: none;
+  }
+  nav ul ul ul li{
+    position: relative;
+    top: -70px;
+    left: 150px;
+  }
+  nav ul ul li a i{
+    margin-left: 45px;
+  }
+  li.right{
+text-align: right;
+float: right;
+}

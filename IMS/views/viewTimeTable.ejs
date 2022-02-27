@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html>
+<title>IMS</title>
+
+<head>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<div>
+    <img src="../assets/images/bg.jpeg">
+
+    <%- include ('layouts/header.ejs') -%>
+        <%- include ('layouts/nav.ejs') -%>
+
+
+
+            <div class="container1 ">
+                <% if (time_table.length>0) { %>
+                    <%var day=["monday","tuesday","wednesday","thursday","friday"]%>
+                        <%var time=["9:00 to 11:00","11:00 to 1:00","1:00 to 2:00","2:00 to 4:00","4:00 to 5:00"]%>
+                        <%var breaks=["B","R","E","A","K"]%>
+                            
+                                <div class="try">
+                                <center>
+                                    <h3>TimeTable List</h3>
+                                    <table border="5" cellspacing="0" >
+                                        <tr>
+
+                                            <td align="center" class="timetable">
+                                                <b>Day/Period</b>
+                                            </td>
+                                            <td align="center" class="timetable">
+                                                <b>
+                                                    9:00 to 11:00
+                                                </b>
+                                            </td>
+                                            <td align="center" class="timetable">
+                                                <b>
+                                                    11:00 to 1:00
+                                                </b>
+                                            </td>
+                                            
+                                            <td align="center" class="timetable">
+                                                <b>
+                                                    2:00 to 4:00
+                                                </b>
+                                            </td>
+
+                                            <td align="center" class="timetable">
+                                                <b>
+                                                    4:00 to 5:00
+                                                </b>
+                                            </td>
+
+
+
+                                        </tr>
+                                        
+                                        
+                                        <%for(var d=0;d<day.length;d++){%>
+                                            
+                                            
+                                            <tr>
+                                                
+
+                                                
+                                                    <td align="center" class="timetable">
+                                                        <b><%=day[d]%></b>
+                                                    </td>
+                                                    <%for(var i=0;i<time_table.length;i++){%>
+
+                                                      <%for(var t=0;t<time.length;t++){%>
+                                                        
+                                                    
+                                                            <%if((time[t]===time_table[i].time)&&(day[d]===time_table[i].day)&&(time_table[i].subjectCode.length>0)){%>
+                                                                
+                                                                <td align="center" class="timetable">
+                                                                    <b><%=time_table[i].subjectCode%></b>
+                                                                    <br>
+                                                                    <b>(<%=time_table[i].userName%>)</b>
+                                                                    
+                                                                </td>
+                                                                <%}else{%>
+
+                                                                    
+                                                                    <%}%>
+                                                                    
+                                                    
+                                                    
+                                                       <%}}%>  
+
+                                            </tr>
+                                           
+                                            
+
+                                            <%}%>
+
+
+                                        </center>
+                                    
+                                    </table>
+                                </div> 
+                           
+
+                            <% } else { %>
+                                <div>No TimeTable found.</div>
+                                <% } %>
+
+                            
+                           
+
+
+                           
+
+            </div>
+</div>
+
+
+
+
+
+
+</html>

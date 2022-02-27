@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html>
+<title>IMS</title>
+
+<head>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+
+
+  <div>
+    <img src="../assets/images/bg.jpeg">
+
+    <%- include ('layouts/header.ejs') -%>
+      <%- include ('layouts/nav.ejs') -%>
+
+<center>
+   
+          <div class="container1 ">
+          <% if (users.length>0) { %>
+            <center>
+            <h3> Users List</h3>
+
+
+            <table class="table table-striped ">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>User ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Mobile</th>
+                  <th>Department</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <% for(var i=0; i < users.length; i++) { %>
+                  <tr>
+                    <td>
+                      <%= users[i].id%>
+                    </td>
+                    <td>
+                      <%= users[i].userId%>
+                    </td>
+                    <td>
+                      <%= users[i].name%>
+                    </td>
+                    <td>
+                      <%= users[i].email%>
+                    </td>
+                    <td>
+                      <%= users[i].phoneNo%>
+                    </td>
+                    <td>
+                      <%= users[i].branch%>
+                    </td>
+
+                    <td>
+                      <a href="/ims/edituser<%= users[i].id%>"><i class="fas fa-edit fa-lg" aria-hidden="true"></i></a>&nbsp;
+                     <a href="/ims/deleteuser<%= users[i].id%>"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+                 </td>
+
+                  </tr>
+                  <% } %>
+              </tbody>
+            </table>
+            
+          
+     
+        </center>
+        
+
+
+          <% } else { %>
+            <div>No users found.</div>
+            <% } %>
+         
+          </div>
+  </div>
+
+
+
+ 
+
+
+</html>
