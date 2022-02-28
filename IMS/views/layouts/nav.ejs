@@ -69,7 +69,14 @@
                     </ul>
                 </li>
                 <li class="right" onclick="logout()"><a href="/ims/">Log Out</a></li>
-                <li class="right"><a href="myprofile">My Profile</a></li>
+                <li class="right"><a  id="myprofile">My Profile</a>
+                    <ul>
+                       
+                        <li><a href="changepasswordrequest">Change Password</a></li>
+
+                    </ul>
+                </li>
+
 
 
             </ul>
@@ -120,7 +127,14 @@
                     </ul>
                 </li>
                 <li class="right" onclick="logout()"><a>Log Out</a></li>
-                <li class="right"><a href="myprofile">My Profile</a></li>
+                <li class="right"><a  id="myprofile">My Profile</a>
+                    <ul>
+                       
+                        <li><a href="changepasswordrequest">Change Password</a></li>
+
+                    </ul>
+                </li>
+                
 
 
             </ul>
@@ -173,7 +187,14 @@
                     </ul>
                 </li>
                 <li class="right" onclick="logout()"><a href="/ims/">Log Out</a></li>
-                <li class="right"><a href="myprofile">My Profile</a></li>
+                <li class="right"><a  id="myprofile">My Profile</a>
+                    <ul>
+                       
+                        <li><a href="changepasswordrequest">Change Password</a></li>
+
+                    </ul>
+                </li>
+
 
 
             </ul>
@@ -187,6 +208,12 @@
 
 
     <script>
+        (function() {
+            let user1 = JSON.parse(localStorage.getItem("user"));
+            var id = parseInt(user1.id);
+             var strLink = "/ims/myprofile" + id;
+         document.getElementById("myprofile").setAttribute("href",strLink);
+})();
         let user = JSON.parse(localStorage.getItem("user"));
         let type = user.type
        

@@ -15,8 +15,14 @@ const { json } = require('express/lib/response');
 
 //myprofile 
 
-router.get('/myprofile',(req,res)=>{
-  res.render('myProfile')
+router.get('/myprofile:id',(req,res)=>{
+  axios.get('http://localhost:8084/ims/getuser/byid',{
+    params:{
+      id:req.params.id
+    }
+  }).then(function(user){
+    res.render("myProfile",{"user":user.data})
+  })
   
 });
 
@@ -36,10 +42,6 @@ router.post('/login',(req,res)=>{
     }
   }).then(function(user){
    
-  
-   console.log({
-     userdata:user.data
-   })
       res.render("redirect",{'user':user.data});
     
     
@@ -225,96 +227,58 @@ router.get('/alltimetable',(req,res)=>{
   
 })
 
+router.get('/reg',(req,res)=>{
+  res.render('registration')
+})
+router.post('/register',(req,res)=>{
+  controller.register(req,res);
+})
 
 
-
-
-
-
-
-
-
-
-
-
-//updating data
-router.post('/update/:id', (req,res) => {
+router.get('/edittimetable:branch/:year/:sem',(req,res)=>{
   
-    controller.update(req,res,req.params.id);
-});
+  
+    axios.get('http://localhost:8084/ims/admin/get/timetable/byweek',{
+        params: {
+          branch:req.params.branch,
+          year:req.params.year,
+          sem:req.params.sem
+        }
+      }).then(function(time_table){
+        
+        res.render("editTimeTable",{'time_table':time_table.data})
+       
+     })
+})
 
 
-//get all employee
-router.get('/list',(req,res)=>{
-axios.get('http://localhost:8084/employees/getAll').then(function(employees){
-        console.log(employees.data)
-        res.render('../views/list',{'employees' : employees.data});
-    })
-
-});
-
-
-
-
-// //get all Users by type
-// router.get('/allusers/:type',(req,res)=>{
-//   let uType=req.params.type;
-//   axios.get('http://localhost:8084/ims/getallusers/bytype',{
-//     params:{
-//         type:uType
+router.get('/changepasswordrequest',(req,res)=>{
+  res.render('editPassword')
+})
+router.post('/changepassword:id',(req,res)=>{
+  let pid=req.params.id
+  let oPaswd=req.body.oldPassword
+  let nPaswd=req.body.newPassword
+ console.log(pid)
+ console.log(oPaswd)
+ console.log(nPaswd)
+  
+  axios.get('http://localhost:8084/ims/changepassword',{
+    params:{
+      id:req.params.id,
+      oldPassword:req.body.oldPassword,
+      newPassword:req.body.newPassword
+    }
+  }
     
-//   }
- 
-// }).then(function(users){
-//           console.log(users.data)
-//           res.render('../views/try',{'users' : users.data})
-//       })
-  
-//   });
-
-//edit employee by id
-router.get('/edit/:id', (req,res)=>{
-    let eid=req.params.id;
-    axios.get('http://localhost:8084/employees/get/byId',{
-        params: {
-          id: eid
-        }
-      }).then(function(employee){
-        res.render("../views/editEmployee", { employee: employee.data});
-    })        
-});
+  ).then(function(){
+    
+    res.redirect("/ims/home")
+   
+ })
+  });
 
 
-//view employee by id
-router.get('/view/:id', (req,res)=>{
-    let eid=req.params.id;
-    axios.get('http://localhost:8084/employees/get/byId',{
-        params: {
-          id: eid
-        }
-      }).then(function(employee){
-        res.render("../views/view", { employee: employee.data});
-    })     
-});
-
-//delete employee by id
-router.get('/delete/:id',(req, res)=> {
-    let eid=req.params.id;
-    axios.delete('http://localhost:8084/employees/delete/byId',{
-        params: {
-          id: eid
-        }
-      }).then(function(){
-        res.redirect("/employee/list")
-       
-    }) 
-});
-
-
-
-
-
-       
        
  
 

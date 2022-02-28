@@ -1,5 +1,6 @@
 package com.training.institutemanagementsystem.service;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,6 +12,7 @@ import com.training.institutemanagementsystem.constant.UserType;
 import com.training.institutemanagementsystem.dto.CreateUsersDetails;
 import com.training.institutemanagementsystem.dto.UpdateUserDto;
 import com.training.institutemanagementsystem.dto.UserDetails;
+import com.training.institutemanagementsystem.exception.UserExistException;
 import com.training.institutemanagementsystem.model.Subject;
 import com.training.institutemanagementsystem.model.Users;
 import com.training.institutemanagementsystem.repository.ISubjectRepository;
@@ -33,10 +35,18 @@ public class ImsServiceImpl implements ImsService {
 	private UserUtil userUtil;
 
 	@Override
-	public UserDetails addUser(CreateUsersDetails user) {
-		Users savedUser=userRepo.save(userUtil.requestToObject(user));
-		return userUtil.toDetails(savedUser);
+	public UserDetails addUser(CreateUsersDetails user)  {
+		
+		try {
+			Users savedUser=userRepo.save(userUtil.requestToObject(user));
+			return userUtil.toDetails(savedUser);
+		}catch (Exception e) {
+			
+			throw new UserExistException("user Already exist");
+		}
+		
 	}
+	
 
 	@Override
 	public List<UserDetails> getAllUsersByType(String type) {
@@ -66,9 +76,17 @@ public class ImsServiceImpl implements ImsService {
 	}
 	
 	@Override
-	public UserDetails editProfile(UpdateUserDto update) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean changePassword(int id, String oPassword,String nPassword) {
+		
+		Users user=userRepo.findById(id).get();
+		if(user.getPassword().equals(oPassword)) {
+			user.setPassword(nPassword);
+			
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 

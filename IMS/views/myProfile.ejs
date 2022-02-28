@@ -12,6 +12,7 @@
 </head>
 
 
+
 <body >
   <div>
     <img src="../assets/images/bg.jpeg">
@@ -23,29 +24,30 @@
     <div class="container2">
       
 
-        <h4 class="text-center ">MY Profile</h4>
+        <h4 class="text-center ">My Profile</h4>
         <center>
           <div class="row col-md-8  ">
-         <label><b>Full Name :</b></label>&nbsp;<label><span id="name"></span></label>
+         <label><b>Full Name :</b></label>&nbsp;<label><span id="name"><%=user.name%></span></label>
          </div>
          <div class="row col-md-8 ">
-         <label><b>UserId :</b></label>&nbsp;<label><span id="userId"></span></label>
+         <label><b>UserId :</b></label>&nbsp;<label><span id="userId"><%=user.userId%></span></label>
         </div>
         <div class="row col-md-8 ">
-         <label><b>Branch :</b></label>&nbsp;<label><span id="branch"></span></label>
+         <label><b>Branch :</b></label>&nbsp;<label><span id="branch"><%=user.branch%></span></label>
         </div>
         <div class="row col-md-8 ">
-         <label><b>Role :</b></label>&nbsp;<label><span id="type"></span></label>
+         <label><b>Role :</b></label>&nbsp;<label><span id="type"><%=user.type%></span></label>
          </div>
          <div class="row col-md-8 ">
-         <label><b>Email :</b></label>&nbsp;<label><span id="email"></span></label>
+         <label><b>Email :</b></label>&nbsp;<label><span id="email"><%=user.email%></span></label>
          </div>
          <div class="row col-md-8 ">
-         <label><b>Phone Number :</b></label>&nbsp;<label><span id="phoneNo"></span></label>
+         <label><b>Phone Number :</b></label>&nbsp;<label><span id="phoneNo"><%=user.phoneNo%></span></label>
             </div>
             <div class=" row justify-content-center ">
-                <a href=""> <button type="submit" class="btn-block btn-primary ">Edit Profile&nbsp;&nbsp<i class="fas fa-edit fa-lg" aria-hidden="true"></i></button></a>&nbsp;
-                    
+                <a href="/ims/edituser<%=user.id%>"> <button type="submit" class="btn-block btn-primary " onclick="getId()">Edit Profile&nbsp;&nbsp<i class="fas fa-edit fa-lg" aria-hidden="true"></i></button></a>&nbsp;
+                     
+                     
                  </div>
    
        
@@ -56,17 +58,25 @@
  
   </div>
   <script>
+
+let user1=JSON.parse(localStorage.getItem("user"));
+(function() {
+  var id = parseInt(user1.id);
+    var strLink = "/ims/edituser" + id;
+    document.getElementById("link2").setAttribute("href",strLink);
+})();
    
-    let user1=JSON.parse(localStorage.getItem("user"));
+ 
+    
    
   
       //  document.getElementById("id").innerHTML =user1.id
-       document.getElementById("name").innerHTML =user1.name
-       document.getElementById("userId").innerHTML =user1.userId
-       document.getElementById("branch").innerHTML =user1.branch
-       document.getElementById("email").innerHTML =user1.email
-       document.getElementById("type").innerHTML =user1.type
-       document.getElementById("phoneNo").innerHTML =user1.phoneNo
+      //  document.getElementById("name").innerHTML =user1.name
+      //  document.getElementById("userId").innerHTML =user1.userId
+      //  document.getElementById("branch").innerHTML =user1.branch
+      //  document.getElementById("email").innerHTML =user1.email
+      //  document.getElementById("type").innerHTML =user1.type
+      //  document.getElementById("phoneNo").innerHTML =user1.phoneNo
 
 
     

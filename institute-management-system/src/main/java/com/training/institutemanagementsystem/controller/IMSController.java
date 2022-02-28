@@ -61,6 +61,13 @@ public class IMSController {
 		return userUpdate;
 		
 	}
+	@GetMapping("/changepassword")
+	public boolean changePassword(@RequestParam int id,@RequestParam String oldPassword,@RequestParam String newPassword) {
+	
+		boolean message=service.changePassword(id,oldPassword,newPassword);
+		return message;
+		
+	}
 	
 	@DeleteMapping("/delete/user")
 	public void deleteUser(@RequestParam int id) {

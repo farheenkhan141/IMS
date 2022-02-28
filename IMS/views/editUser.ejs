@@ -12,7 +12,7 @@
   
 </head>
 
-
+<body>
 
   <div>
     
@@ -38,7 +38,7 @@
                         </div>
                        
       
-                            <div class=" row justify-content-center ">
+                            <div id="admin1" class=" row justify-content-center ">
                                 <div class="form-group col-sm-6 ">
                                     <label for="role">Select Role</label>
                                     
@@ -46,14 +46,19 @@
                                       <%if(user.type=="FACULTY"){%>
                                       <option name="role" value="faculty" selected>Faculty</option>
                                       <option name="role" value="student" >Student</option>
-                                      <%}else{%>
+                                      <%}else if(user.type=="STUDENT"){%>
                                         <option name="role" value="faculty" >Faculty</option>
                                     <option name="role" value="student" selected>Student</option>
-                                    <%}%>
+                                    <%}else {%>
+                                     
+                                    <option name="role" value="admin" selected>Admin</option>
+                                      <option name="role" value="faculty" >Faculty</option>
+                                      <option name="role" value="student" >Student</option>
+                                      <%}%>
                                   </select> </div>
                             </div>
 
-            <div class=" row justify-content-center ">
+            <div id="admin2" class=" row justify-content-center ">
                 <div class="form-group col-sm-6 ">
                     <label for="branch">Select Branch</label>
                      <select class="custom-select" name="branch" id="branch">
@@ -78,7 +83,12 @@
                           <option value="Computer" >Computer</option>
                           <option  value="Electrical" >Electrical</option>
                           <option  value="Mechanical" selected>Mechanical</option>
-                      
+                          <%} else {%>
+                            <option  value="IT" >IT</option>
+                          <option value="Computer" >Computer</option>
+                          <option  value="Electrical">Electrical</option>
+                          <option  value="Mechanical">Mechanical</option>
+                          
                       <%}}}}%>
                     
                   </select> </div>
@@ -94,4 +104,17 @@
     </div>
     </center>
   </div>
+</body>
+<script>
+  if (type == "ADMIN") {
+          console.log(type)
+            document.getElementById('admin1').style.display = ""
+            document.getElementById('admin2').style.display = ""
+      
+        } else{
+          console.log(type)
+            document.getElementById('admin1').style.display = "none"
+       
+        }
+</script>
   </html>

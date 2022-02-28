@@ -28,6 +28,7 @@ public interface ImsService {
 	public UserDetails findUserById(int id);
 
 	public UserDetails updateUser(UpdateUserDto update);
-	public UserDetails editProfile(UpdateUserDto update);
+	public boolean changePassword(int id,String oldPassword,String newSPassword);
+	
 
 }

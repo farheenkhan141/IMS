@@ -11,6 +11,7 @@ function insertRecord(req, res) {
           email:req.body.email,
           phoneNo:req.body.phoneNo,
           branch:req.body.branch,
+          password:req.body.passowrd,
           type:req.body.role
         }
       }).then(function(users){
@@ -117,8 +118,9 @@ function updateUser(req,res,uid) {
           name: req.body.name,
           email:req.body.email,
           phoneNo:req.body.phoneNo,
-          branch:req.body.branch,
-          type:req.body.role
+          type:req.body.role,
+          branch:req.body.branch
+         
 
         }
       }).then(function(){
@@ -146,10 +148,29 @@ function updateSubject(req,res,sid) {
       res.redirect("/ims/allsubject");
     });
 };
+function register(req, res) {
+    
+  axios({
+      method: 'post',
+      url: 'http://localhost:8084/ims/add',
+      data: {
+        name: req.body.name,
+        email:req.body.email,
+        phoneNo:req.body.phoneNo,
+        branch:req.body.branch,
+        password:req.body.passowrd,
+        type:"admin"
+      }
+    }).then(function(users){
+      console.log(users.data);
+      res.redirect("/ims/");
+  })     
+    
+};
 
 
 
 
 
 
-module.exports={insertRecord,insertTimeTable,insertSubject,updateUser,updateSubject};
+module.exports={insertRecord,insertTimeTable,insertSubject,updateUser,updateSubject,register};

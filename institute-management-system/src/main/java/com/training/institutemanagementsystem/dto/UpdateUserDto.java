@@ -9,9 +9,7 @@ public class UpdateUserDto {
 	private String name;
 	private String branch;
 	private String type;
-	private String userId;
 	private String email;
 	private String phoneNo;
-	private String oldPassword;
-	private String NewPassword;
+	
 }
